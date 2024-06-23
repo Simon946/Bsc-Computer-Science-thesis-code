@@ -219,7 +219,7 @@ void* bucketize(void* a){
         uint32_t partialKey = bswap_32(*(uint32_t*)&current.key);
         uint32_t lowKey = bswap_32(*(uint32_t*)args->targets.front().lowKey);
         uint32_t highKey = bswap_32(*(uint32_t*)args->targets.back().highKey);
-        size_t bucketIndex = (size_t)(partialKey - lowKey) * args->targets.size() / (size_t)(highKey - lowKey);
+        size_t bucketIndex = (size_t)(partialKey - lowKey) * args->targets.size() / ((size_t)(highKey - lowKey) + 1);
 
         Target& target = args->targets.at(bucketIndex);
 
